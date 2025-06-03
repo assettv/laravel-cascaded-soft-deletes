@@ -2,8 +2,8 @@
 
 namespace AssetTV\LaravelCascadedSoftDeletes\Tests\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use AssetTV\LaravelCascadedSoftDeletes\Traits\CascadedSoftDeletes;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
