@@ -9,6 +9,7 @@
 * Cascade restore for chosen relations (only models with `deleted_at >= restoredInstance->deleted_at` value will be restored)
 * Ability to follow a custom query
 * By default, all cascade actions will be added to the default queue; you can change this behavior by publishing the package's config file.
+* Original package can be found at [laravel-cascaded-soft-deletes](https://github.com/razisayyed/laravel-cascaded-soft-deletes) which seems to be abandoned and not maintained anymore.
 
 ## Installation
 
