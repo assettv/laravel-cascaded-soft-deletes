@@ -2,7 +2,6 @@
 
 namespace AssetTV\LaravelCascadedSoftDeletes;
 
-use AssetTV\LaravelCascadedSoftDeletes\Commands\LaravelCascadedSoftDeletesCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -17,9 +16,6 @@ class LaravelCascadedSoftDeletesServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-cascaded-soft-deletes')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel_cascaded_soft_deletes_table')
-            ->hasCommand(LaravelCascadedSoftDeletesCommand::class);
+            ->hasConfigFile();
     }
 }
