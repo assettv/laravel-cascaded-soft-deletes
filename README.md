@@ -18,38 +18,101 @@ You can install the package via composer:
 composer require assettv/laravel-cascaded-soft-deletes
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-cascaded-soft-deletes-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="laravel-cascaded-soft-deletes-config"
 ```
 
-These are the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-cascaded-soft-deletes-views"
-```
-
 ## Usage
 
+To set up CascadedSoftDeletes, you need to use the trait on the parent model and define `$cascadedSoftDeletes` property or `getCascadedSoftDeletes()` method.
+
+### Simple example with `$cascadedSoftDeletes` property
 ```php
-$laravelCascadedSoftDeletes = new AssetTV\LaravelCascadedSoftDeletes();
-echo $laravelCascadedSoftDeletes->echoPhrase('Hello, AssetTV!');
+<?php
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use AssetTV\LaravelCascadedSoftDeletes\Traits\CascadedSoftDeletes;
+
+class Page extends Model {
+
+    use SoftDeletes;
+    use CascadedSoftDeletes;
+
+    protected $cascadedSoftDeletes = [ 'blocks' ];
+
+    public function blocks()
+    {
+        return $this->hasMany(Block::class);
+    }
+
+}
 ```
+
+```php
+<?php
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Block extends Model {
+
+    use SoftDeletes;
+
+    public function page() 
+    {
+        return $this->belongsTo(Page::class);
+    }
+
+}
+```
+
+### Advanced example with `getCascadedSoftDeletes` and custom queries
+
+You can also define a custom query to cascade soft deletes and restores through.
+
+The following example describes a scenario where Folder is a model that uses `NodeTrait` from [laravel-nestedset](https://github.com/lazychaser/laravel-nestedset) class and each folder has many albums. getCascadedSoftDeletes() in the example will cascade soft deletes and restores to albums related to the folder and all its descendants.
+
+```php
+<?php
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use AssetTV\LaravelCascadedSoftDeletes\Traits\CascadedSoftDeletes;
+
+class Folder extends Model {
+
+    use SoftDeletes;
+    use NodeTrait;
+    use CascadedSoftDeletes;
+
+    public function albums()
+    {
+        return $this->hasMany(Album::class);
+    }
+
+    protected function getCascadedSoftDeletes()
+    {
+        return [
+            'albums' => function() {
+                return Album::whereHas('folder', function($q) {
+                    $q->withTrashed()
+                        ->where('_lft', '>=', $this->getLft())
+                        ->where('_rgt', '<=', $this->getRgt());
+                });  
+            }
+        ];
+    }
+
+}
+```
+
+### Requirements for the Parent & Child model classes
+* Both classes must use SoftDeletes trait.
+* Parent class must use CascadedSoftDeletes trait.
+* Parent class must define `$cascadedSoftDeletes` or implement `getCascadedSoftDeletes` method which must return a list of cascaded HasMany relations and/or custom queries.
 
 ## Testing
 
