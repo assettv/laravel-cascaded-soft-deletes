@@ -29,6 +29,7 @@ php artisan vendor:publish --tag="laravel-cascaded-soft-deletes-config"
 To set up CascadedSoftDeletes, you need to use the trait on the parent model and define `$cascadedSoftDeletes` property or `getCascadedSoftDeletes()` method.
 
 ### Simple example with `$cascadedSoftDeletes` property
+
 ```php
 <?php
 
@@ -110,6 +111,7 @@ class Folder extends Model {
 ```
 
 ### Requirements for the Parent & Child model classes
+
 * Both classes must use SoftDeletes trait.
 * Parent class must use CascadedSoftDeletes trait.
 * Parent class must define `$cascadedSoftDeletes` or implement `getCascadedSoftDeletes` method which must return a list of cascaded HasMany relations and/or custom queries.
@@ -123,20 +125,3 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [Will Wilson](https://github.com/mojowill)
-- [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
