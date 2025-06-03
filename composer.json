@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "assettv/laravel-cascaded-soft-deletes",
+    "description": "Cascade soft delete for chosen relations",
     "keywords": [
-        ":vendor_name",
+        "Asset TV",
         "laravel",
-        ":package_slug"
+        "laravel-cascaded-soft-deletes"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/assettv/laravel-cascaded-soft-deletes",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Will Wilson",
+            "email": "will.wilson@asset.tv",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "AssetTV\\LaravelCascadedSoftDeletes\\": "src/",
+            "AssetTV\\LaravelCascadedSoftDeletes\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "AssetTV\\LaravelCascadedSoftDeletes\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "AssetTV\\LaravelCascadedSoftDeletes\\LaravelCascadedSoftDeletesServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelCascadedSoftDeletes": "AssetTV\\LaravelCascadedSoftDeletes\\Facades\\LaravelCascadedSoftDeletes"
             }
         }
     },

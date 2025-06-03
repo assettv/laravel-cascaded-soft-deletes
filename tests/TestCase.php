@@ -1,10 +1,10 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace AssetTV\LaravelCascadedSoftDeletes\Tests;
 
+use AssetTV\LaravelCascadedSoftDeletes\LaravelCascadedSoftDeletesServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'AssetTV\\LaravelCascadedSoftDeletes\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            LaravelCascadedSoftDeletesServiceProvider::class,
         ];
     }
 

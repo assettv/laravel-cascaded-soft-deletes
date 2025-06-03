@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace AssetTV\LaravelCascadedSoftDeletes\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelCascadedSoftDeletesCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-cascaded-soft-deletes';
 
     public $description = 'My command';
 
