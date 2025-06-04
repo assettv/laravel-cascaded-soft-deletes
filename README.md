@@ -1,15 +1,28 @@
-# Cascade soft delete for Laravel Models
+# Cascade Soft Delete for Laravel Models
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/assettv/laravel-cascaded-soft-deletes.svg?style=flat-square)](https://packagist.org/packages/assettv/laravel-cascaded-soft-deletes)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/assettv/laravel-cascaded-soft-deletes/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/assettv/laravel-cascaded-soft-deletes/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/assettv/laravel-cascaded-soft-deletes/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/assettv/laravel-cascaded-soft-deletes/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/assettv/laravel-cascaded-soft-deletes.svg?style=flat-square)](https://packagist.org/packages/assettv/laravel-cascaded-soft-deletes)
 
-* Cascade soft delete for chosen relations
-* Cascade restore for chosen relations (only models with `deleted_at >= restoredInstance->deleted_at` value will be restored)
-* Ability to follow a custom query
-* By default, all cascade actions will be added to the default queue; you can change this behavior by publishing the package's config file.
-* Original package can be found at [laravel-cascaded-soft-deletes](https://github.com/razisayyed/laravel-cascaded-soft-deletes) which seems to be abandoned and not maintained anymore.
+## Features
+
+1. **Cascade Soft Delete for Relations**  
+   Soft delete related records automatically when a parent is soft deleted.
+
+2. **Cascade Restore for Relations**  
+   Automatically restore related models if their `deleted_at` is later than or equal to the parent's restore date.
+
+3. **Custom Query Support**  
+   Use a custom query to control cascade actions.
+
+4. **Configurable Queue Behavior**  
+   All cascade actions are queued by default. This behavior can be customized by publishing and editing the package's config file.
+
+---
+
+**Note:**  
+This package is based on [Laravel Cascaded Soft Deletes (original, no longer maintained)](https://github.com/razisayyed/laravel-cascaded-soft-deletes).
 
 ## Installation
 
